@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<html class="no-js">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Selectize.js Demo</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/stylesheet.css">
+		<!--[if IE 8]><script src="js/es5.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/standalone/selectize.js"></script>
+		<script src="js/index.js"></script>
+	</head>
+    <body>
+		<div id="wrapper">
+			
+				<div class="control-group">
+					<label for="select-state">Tags:</label>
+					<select id="select-state" multiple name="state[]" class="demo-default" style="width:50%">
+						<option value="">Select a state...</option>
+						<option value="AL">Alabama</option>
+						<option value="AK">Alaska</option>
+	
+						<option value="VT">Vermont</option>
+						<option value="VA">Virginia</option>
+						<option value="WA">Washington</option>
+						<option value="WV">West Virginia</option>
+						<option value="WI">Wisconsin</option>
+						<option value="WY">Wyoming</option>
+					</select>
+				</div>
+				
+				
+			</div>
+			<script>
+				var eventHandler = function(name) {
+					return function() {
+						console.log(name, arguments);
+						$('#log').append('<div><span class="name">' + name + '</span></div>');
+					};
+				};
+				var $select = $('#select-state').selectize({
+					create          : false,
+					maxItems		: 4,
+					onChange        : eventHandler('onChange'),
+					onItemAdd       : eventHandler('onItemAdd'),
+					onItemRemove    : eventHandler('onItemRemove'),
+					onOptionAdd     : eventHandler('onOptionAdd'),
+					onOptionRemove  : eventHandler('onOptionRemove'),
+					onDropdownOpen  : eventHandler('onDropdownOpen'),
+					onDropdownClose : eventHandler('onDropdownClose'),
+					onFocus         : eventHandler('onFocus'),
+					onBlur          : eventHandler('onBlur'),
+					onInitialize    : eventHandler('onInitialize'),
+				});
+				</script>
+		
+	</body>
+</html>
